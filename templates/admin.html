@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="dist/css/component-custom-switch.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 50px 0px 0px 0px;
+            z-index: 0; 
+        }
+  
+        .navbar-dark {
+            background-color: #512DA8; 
+        }
+
+        .modal-header {
+            background-color: #512DA8; 
+        }
+        .modal-header .modal-title {
+            color: floralwhite; 
+        }
+        .modal-header .close {
+            color: floralwhite; 
+        }
+  
+        .modal-body {
+            background-color: #D1C4E9; 
+        }
+
+        .tab-content {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px; 
+        }
+
+        #im1{
+            position: relative;
+            top: 0;
+            left: 0;
+            border: 1px red solid;
+        }
+
+        .im2{
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            border: 1px;
+        }
+  
+        .carousel {
+            background: #f5f5f7; }
+        .carousel .carousel-item {
+            height: 500px; }
+        .carousel .carousel-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-height: 300px; }
+  
+        #carouselButton {
+            right: 0px;
+            position: absolute;
+            bottom: 0px; }
+
+    </style>
+    <title>Thyroid Disease Detection</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+             </button>
+            <a class="navbar-brand" href="./index.html"><img src="https://img.freepik.com/free-photo/medical-stethoscope-with-paper-cut-family_23-2148488217.jpg?size=626&ext=jpg" height="30" width="41"></a>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="./"><span class="fa fa-home fa-lg"></span> Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./info.html"><span class="fa fa-male fa-lg"></span> Info</a></li>
+                        <li class="nav-item"><a class="nav-link" id="adminButton"><span class="fa fa-female fa-lg"></span> Admin</a></li>
+                </ul>
+                <span class="navbar-text">
+                    <a id="loginButton" target="loginFrame">
+                        <span class="fa fa-sign-in"></span> Login
+                    </a>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    
+</body>
+</html>

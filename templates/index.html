@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="dist/css/component-custom-switch.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 50px 0px 0px 0px;
+            z-index: 0; 
+        }
+  
+        .navbar-dark {
+            background-color: #512DA8; 
+        }
+
+        .jumbotron {
+            margin: 0px auto;
+            padding: 70px 30px;
+            background: #9575CD;
+            color: floralwhite; 
+        }
+
+        .footer {
+    background-color: #D1C4E9;
+    margin: 0px auto;
+    padding: 20px 0px; }
+  
+
+        .modal-header {
+            background-color: #512DA8; 
+        }
+        .modal-header .modal-title {
+            color: floralwhite; 
+        }
+        .modal-header .close {
+            color: floralwhite; 
+        }
+  
+        .modal-body {
+            background-color: #D1C4E9; 
+        }
+
+        label{
+            display: block;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        label input + span::before{
+            position: absolute;
+            content: "";
+            right: 0;
+            top: 4px;
+            width: 60px;
+            height: 30px;
+            border-radius: 20px;
+            background-color: #ccc;
+            transition: all 0.3s ease-in-out;
+         }
+
+        label input + span::after{ 
+            position: absolute;
+            content: "";
+            right: 2px;
+            top: 6px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: #fff;
+            transform: translateX(-30px);
+        }
+
+        label input:checked + span::before{
+            background-color: #4cca5e;
+        }
+
+
+        label input{
+            display: none;
+        }
+
+        label input:checked + span::after{
+            transform: translateX(0px);
+        }
+
+        .visibile{
+            visibility: hidden;
+        }
+
+
+
+    </style>
+    <title>Thyroid Disease</title>
+</head>
+<body>
+    
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+             </button>
+            <a class="navbar-brand" href="./index.html"><img src="https://img.freepik.com/free-photo/medical-stethoscope-with-paper-cut-family_23-2148488217.jpg?size=626&ext=jpg" height="30" width="41"></a>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                        <li class="nav-item"><a class="nav-link" href="./"><span class="fa fa-home fa-lg"></span> Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-male fa-lg"></span> Check up</a></li>
+                        
+                </ul>
+                <span class="navbar-text">
+                    <a class="nav-link" href="./">
+                        <span class="fa fa-sign-in"></span> Logout
+                    </a>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm-6">
+                    <h1>Thyroid Disease Detection</h1>
+                    
+                </div>
+                <div class="col-12 col-sm align-self-center">
+                    <img src="https://freepngimg.com/thumb/categories/1523.png" class="img-fluid" width="200" height="200">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="medicationhavingModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Medication</h4>
+                    <button type="button" class="close" id="close">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body" id="a1">
+                    <div class="alert alert-danger" id="having">
+                        <strong>Danger!</strong> You have high TSH value so please consult doctors, For more <a href="info.html">info</a>.
+                    </div>
+                </div>
+                <div class="modal-body" id="a2">
+                    <div class="alert alert-danger" id="having">
+                        <strong>You have Thyroid disease!</strong> So, please follow the diet below:
+                    </div>
+                    <h5>Foods to Avoid</h5>
+                    <p><b>soy foods:</b> tofu, tempeh, edamame. <br> <b>certain vegetables: </b> cabbage, broccoli, kale, cauliflower, spinach. <br> <b>fruits and starchy plants: </b>sweet potatoes, cassava, peaches, strawberries. <br> <b>nuts and seeds: </b> millet, pine nuts, peanuts.</p>
+                    <hr>
+                    <h5>Foods to Eat</h5>
+                    <p><b>eggs: </b> whole eggs are best, as much of their iodine and selenium are found in the yolk, while the whites are full of protien.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="medicationnothavingModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Medication</h4>
+                    <button type="button" class="close" id="close">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success" id="nothaving">
+                        <strong>Hey Your safe!</strong> You have no problem.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="medicationModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Medication</h4>
+                    <button type="button" class="close" id="close">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Please check whether you have Thyroid or not. The results will be displayed automatically.</h6>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="container">
+                <div class="card-body">
+                    <form action="{{ url_for('predict')}}" method="post">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <h4>Age: </h4>
+                            </div>
+                            <div class="col-2">
+                                <input class="form-control" type="number" name="age" placeholder="Age" required="required"/>
+                            </div>
+                            <div class="col-2">
+
+                            </div>
+                            <div class="col-sm-0">
+                                <h4>Gender: </h4>
+                            </div>
+                            <div class="col-sm-1">
+
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="Gender" value="0" checked/><span><h6>Male</h6></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="Gender" value="1"/><span><h6>Female</h6></span>
+                                </label>
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4>Do you have Thyroxine?</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="on_thyroxine" value="1" checked/><span><h6> Yes</h6></span>
+                                </label>
+                            </div>                            
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="on_thyroxine" value="0"/> <span><h6> No</h6></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <h4>Are you sick?</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="sick" value="1" checked/><span><h6>Yes</h6></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="sick" value="0"/><span><span><h6>No</h6></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4>Have gone through thyroid surgery before?</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="thyroid_surgery" value="1" checked/><span><h6>Yes</h6></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="thyroid_surgery" value="0"/><span><h6>No</h6></span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h4>Did you take any I131 Treatment ?</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="I131_treatment" value="1" checked/><span><h6>Yes</h6></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="I131_treatment" value="0"/><span><h6>No</h6></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h4>Do you have Hypothyroid according to Reports?</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="query_hypothyroid" value="1" checked/><span><h6>Yes</h6></span>
+                                </label>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="query_hypothyroid" value="0"/><span><h6>No</h6></span>
+                                </label>
+                               
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <h4>Do you have Hyperthyroid according to Reports?</h4>
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="query_hyperthyroid" value="1" checked/><span><h6>Yes</h6></span>
+                                </label>
+                            </div>  
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="query_hyperthyroid" value="0"/><span><h6>No</h6></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="row">
+                           <div class="col-sm-3">
+                                <h4>Do you have goitre?</h4>
+                           </div>
+                           <div class="col-sm-2">
+                               <label>
+                                    <input type="radio" name="goitre" value="1" checked/><span><h6>Yes</h6></span>
+                                </label>     
+                            </div>
+                            <div class="col-sm-2">
+                                <label>
+                                    <input type="radio" name="goitre" value="0"/><span><h6>No</h6></span>
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                           <div class="col-sm-2">
+                                <h4>TSH value:</h4>
+                           </div>
+                           <div class="col-2">
+                                <input class="form-control" type="number" name="TSH" id="myNumber" placeholder="TSH Value" required="required"/>
+                           </div>
+                           <div class="col-sm-2">
+                                <h4>T3 value:</h4>
+                           </div>
+                            <div class="col-2">
+                                <input class="form-control" type="number" name="T3" placeholder="T3 Value" required="required"/>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <h4>TT4 value:</h4>
+                            </div>
+                            <div class="col-2">
+                                <input class="form-control" type="number" name="TT4" placeholder="TT4 Value" required="required"/>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <h4>T4U value:</h4>
+                            </div>
+
+                            <div class="col-2">
+                                <input class="form-control" type="number" name="T4U" placeholder="T4U Value" required="required"/>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <h4>
+                                    FTI value:
+                                </h4>
+                            </div>
+                            <div class="col-2">
+                                <input class="form-control" type="number" name="FTI" placeholder="FTI Value" required="required"/>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="button_cont" align="center"><a class="button_css" href="https://indianaiproduction.com/" target="_blank" rel="nofollow noopener">
+                            <button type="submit" class="btn btn-primary"><strong>Result: </strong></button></a>
+                            &nbsp;&nbsp;&nbsp;
+                            <button type="button" class="btn btn-success" onclick="medic()">Medication</button>
+                        </div>
+
+
+
+                    </form>
+                    <div>
+                        <center>
+                            <h3>{{ prediction_text }}</h3>
+                        </center>
+                    </div>
+                </div>
+        </div>
+
+        <p id="med" style="visibility: hidden;">{{ prediction_text }}</p>
+        <p id="m" style="visibility: hidden;">{{ t }}</p>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+     
+
+
+        <script>
+
+
+            function medic(){
+                var a = document.getElementById("med").innerHTML;
+                if(a == "The person does not have any thyroid disease"){
+                    $('#medicationnothavingModal').modal('toggle');
+
+                }
+                else if(a == "The person have the throid disease"){
+                    var v = document.getElementById("m").innerHTML;
+                    if(v <= 3){
+                        document.getElementById("a1").style.display = "block";
+                        document.getElementById("a2").style.display = "none";
+                    }
+                    else{
+                        document.getElementById("a2").style.display = "block";
+                        document.getElementById("a1").style.display = "none";
+                    }
+                    $('#medicationhavingModal').modal('toggle');
+                }
+                else{
+                    $('#medicationModal').modal('toggle');
+                }
+
+            }
+
+            $(document).ready(function() {
+                $('#close').click(function() {
+                    $('#medicationhavingModal').modal('hide');
+                });
+
+                $('#close').click(function() {
+                    $('#medicationModal').modal('hide');
+                });
+
+
+                $('#cancelButton').click(function() {
+                    $('#medicationhavingModal').modal('hide');
+                });
+
+                $('#close').click(function() {
+                    $('#medicationnothavingModal').modal('hide');
+                });
+
+
+                $('#cancelButton').click(function() {
+                    $('#medicationnothavingModal').modal('hide');
+                });
+                
+        });
+        </script>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">             
+            <div class="col-4 offset-1 col-sm-2">
+                <h5>Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/info.html">Info</a></li>
+                </ul>
+            </div>
+            <div class="col-7 col-sm-5">
+                <h5>Our Address</h5>
+                <address>
+                  Near MetroStation<br>
+                  SR Nagar, Vengal Rao nagar<br>
+                  Hyderabad<br>
+                  <i class="fa fa-phone fa-lg"></i>: +91- 9999999999<br>
+                  <i class="fa fa-fax fa-lg"></i>: +91- 9999999999<br>
+                  <i class="fa fa-envelope fa-lg"></i>: <a href="mailto:contact@thyroid.net">contact@thyroid.net</a>
+               </address>
+            </div>
+            <div class="col-12 col-sm-4 align-self-center">
+                <div class="text-center">
+                    <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus fa-lg"></i></a>
+                    <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook fa-lg"></i></a>
+                    <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin fa-lg"></i></a>
+                    <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube fa-lg"></i></a>
+                    <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o fa-lg"></i></a>
+                </div>
+            </div>
+       </div>
+       <div class="row justify-content-center">             
+            <div class="col-auto">
+                <p>© Copyright 2021 Ecommerce Website</p>
+            </div>
+       </div>
+    </div>
+</footer>
+</body>
+</html>
